@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * - button checks/loops
  *
  */
-public class Help {
+public class StartHelp {
 
     RenderWindow window;
     ArrayList<Button> buttonArray =  new ArrayList<>();
@@ -26,13 +26,11 @@ public class Help {
     Font textFont = new Font();
     boolean onHelp;
 
-    public Help(){
+    public StartHelp(){
         window = new RenderWindow(new VideoMode(1000,1000), "Help");
-        //this.window = window;
         generateBackground();
         generateButtons();
         window.draw(backgroundSprite);
-
         window.display();
         onHelp = true;
         runHelp();
@@ -62,12 +60,12 @@ public class Help {
         textArray.add(new text(1,new Vector2f(180, 630), textFont, Color.YELLOW));
         textArray.get(0).setString(
                 "W,S,A,D for up down left and right\n\n" +
-                "Left click to pick up\n\n" +
-                "right click to shoot\n\n" +
-                "press 1-5 to change to item in inventory \n\n" +
-                "E drops\n\n" +
-                "T opens pause menu\n\n" +
-                "ESC to exit");
+                        "Left click to pick up\n\n" +
+                        "right click to shoot\n\n" +
+                        "press 1-5 to change to item in inventory \n\n" +
+                        "E drops\n\n" +
+                        "T opens pause menu\n\n" +
+                        "ESC to exit");
         textArray.get(0).setCharacterSize(20);
         textArray.add(new text(2,new Vector2f(375, 50), textFont, Color.YELLOW));
         textArray.get(1).setString("Help");
@@ -79,15 +77,15 @@ public class Help {
         textArray.add(new text(4,new Vector2f(180, 200), textFont, Color.YELLOW));
         textArray.get(3).setString(
                 "The aim of the game is to defeat all 4 bosses.\n\n" +
-                "When you start the game you will be in a room \n\n " +
-                "of chests, you must destroy the chest to collect\n\n" +
-                "items to help you defeat the bosses easier \n\n" +
-                "these chest levels will be between each boss level\n\n" +
-                "during each level of the game including the \n\n" +
-                "chests small mini bosses will pop up to try and kill you \n\n" +
-                "once you are ready to defeat the boss \n\n " +
-                "you must find the ladder on the map to progress \n\n" +
-                "Good Luck"
+                        "When you start the game you will be in a room \n\n " +
+                        "of chests, you must destroy the chest to collect\n\n" +
+                        "items to help you defeat the bosses easier \n\n" +
+                        "these chest levels will be between each boss level\n\n" +
+                        "during each level of the game including the \n\n" +
+                        "chests small mini bosses will pop up to try and kill you \n\n" +
+                        "once you are ready to defeat the boss \n\n " +
+                        "you must find the ladder on the map to progress \n\n" +
+                        "Good Luck"
         );
         textArray.get(3).setCharacterSize(20);
 
@@ -99,15 +97,15 @@ public class Help {
      *
      */
     public void generateButtons() {
-        Texture quitTexture = new Texture();
+        Texture playTexture = new Texture();
         try {
-            quitTexture.loadFromFile(Paths.get("Assets" + File.separator + "Menu" + File.separator + "back.png"));
+            playTexture.loadFromFile(Paths.get("Assets" + File.separator + "Menu" + File.separator + "Start.png"));
         } catch (Exception e) {
             System.out.println(e);
         }
 
         buttonArray.add(new Button(1, new Vector2f(300, 800), 400, 200));
-        buttonArray.get(0).setTexture(quitTexture);
+        buttonArray.get(0).setTexture(playTexture);
 
     }
     /**
@@ -151,34 +149,30 @@ public class Help {
     public void runHelp(){
         while(onHelp)
         {
-        for (Event event : window.pollEvents())
-        {
-
-        }
-        if (Mouse.isButtonPressed(Mouse.Button.LEFT))
-        {
-            if (checkButtons() == 1)
+            for (Event event : window.pollEvents())
             {
-                //System.out.println("test");
-                onHelp = false;
-                window.close();
-                RenderWindow window = new RenderWindow(new VideoMode(1000,1000),"CoreControl");
-                StartMenu newStartMenu = new StartMenu(window);
-
 
             }
-        }
-        window.clear();
-        window.draw(backgroundSprite);
-        for (text t: textArray)
-        {
-            window.draw(t);
-        }
-        for (Button b: buttonArray)
-        {
-            window.draw(b);
-        }
-        window.display();
+            if (Mouse.isButtonPressed(Mouse.Button.LEFT))
+            {
+                if (checkButtons() == 1)
+                {
+                    //System.out.println("test");
+                    onHelp = false;
+                    window.close();
+                }
+            }
+            window.clear();
+            window.draw(backgroundSprite);
+            for (text t: textArray)
+            {
+                window.draw(t);
+            }
+            for (Button b: buttonArray)
+            {
+                window.draw(b);
+            }
+            window.display();
         }
     }
 }

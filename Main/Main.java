@@ -10,8 +10,7 @@ public class Main
 {
 
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws InterruptedException {
 
         RenderWindow window = new RenderWindow(new VideoMode(1000,1000),"MainMenu");
         StartMenu newStartMenu = new StartMenu(window);

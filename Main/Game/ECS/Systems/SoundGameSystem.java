@@ -27,7 +27,7 @@ public class SoundGameSystem extends GameSystem
     private SoundGameSystem()
     {
         setBitMaskRequirement(BitMasks.produceBitMask(SoundEffect.class));
-        Listener.setGlobalVolume(20f);
+
         try{
             sb.loadFromFile(Paths.get("Assets" + File.separator + "Sound" + File.separator+ "Fireball.wav"));
         }

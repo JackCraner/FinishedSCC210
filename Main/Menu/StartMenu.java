@@ -3,9 +3,7 @@ package Main.Menu;
 
 import Main.Game.Game;
 import Main.Menu.Button;
-import org.jsfml.graphics.RenderWindow;
-import org.jsfml.graphics.Sprite;
-import org.jsfml.graphics.Texture;
+import org.jsfml.graphics.*;
 import org.jsfml.system.Vector2f;
 import org.jsfml.window.Keyboard;
 import org.jsfml.window.Mouse;
@@ -26,6 +24,9 @@ public class StartMenu {
     RenderWindow window;
     ArrayList<Button> buttonArray =  new ArrayList<>();
     Sprite backgroundSprite = new Sprite();
+    RectangleShape logo = new RectangleShape();
+    ArrayList<text> textArray =  new ArrayList<>();
+    Font textFont = new Font();
     boolean onMenu;
 
     public StartMenu(RenderWindow window)
@@ -46,7 +47,11 @@ public class StartMenu {
         Texture backgroundTexture = new Texture();
         try
         {
+            textFont.loadFromFile(Paths.get("Assets" + File.separator + "Fonts" + File.separator+ "HANGTHEDJ.ttf"));
             backgroundTexture.loadFromFile(Paths.get("Assets"+ File.separator + "Menu"+ File.separator + "MenuBackground.jpg"));
+            Texture t = new Texture();
+            t.loadFromFile(Paths.get("Assets"+ File.separator + "Menu"+ File.separator + "Pixel_Earth.png"));
+            logo.setTexture(t);
         }
         catch(Exception e)
         {
@@ -54,7 +59,10 @@ public class StartMenu {
         }
         backgroundSprite.setTexture(backgroundTexture);
         backgroundSprite.setScale(1,1f);
-        //backgroundSprite.setPosition(10,10);
+        logo.setSize(new Vector2f(400,400));
+        logo.setPosition(new Vector2f(310,350));
+        textArray.add(new text(1,new Vector2f(150, 500), textFont, Color.YELLOW));
+
     }
     /**
      * This sets up the buttons needed to redirect
@@ -67,7 +75,6 @@ public class StartMenu {
         Texture quitTexture = new Texture();
         Texture settTexture = new Texture();
         Texture helpTexture = new Texture();
-        Texture credTexture = new Texture();
         Texture conTexture = new Texture();
         try
         {
@@ -75,7 +82,6 @@ public class StartMenu {
             quitTexture.loadFromFile(Paths.get("Assets"+ File.separator + "Menu"+ File.separator + "quit.png"));
             settTexture.loadFromFile(Paths.get("Assets"+ File.separator + "Menu"+ File.separator + "Settings.png"));
             helpTexture.loadFromFile(Paths.get("Assets"+ File.separator + "Menu"+ File.separator + "Help.png"));
-            credTexture.loadFromFile(Paths.get("Assets"+ File.separator + "Menu"+ File.separator + "Credits.png"));
             conTexture.loadFromFile(Paths.get("Assets"+ File.separator + "Menu"+ File.separator + "Continue.png"));
         }
         catch(Exception e)
@@ -92,14 +98,11 @@ public class StartMenu {
         buttonArray.add(new Button(3,new Vector2f(525,800),300,100));
         buttonArray.get(2).setTexture(helpTexture);
 
-        buttonArray.add(new Button(4,new Vector2f(150,800),300,100));
-        buttonArray.get(3).setTexture(credTexture);
+        buttonArray.add(new Button(4,new Vector2f(350, 115), 300, 100));
+        buttonArray.get(3).setTexture(conTexture);
 
-        buttonArray.add(new Button(5,new Vector2f(350, 115), 300, 100));
-        buttonArray.get(4).setTexture(conTexture);
-
-        buttonArray.add(new Button(6,new Vector2f(350, 800), 300, 100));
-        buttonArray.get(5).setTexture(settTexture);
+        buttonArray.add(new Button(5,new Vector2f(150, 800), 300, 100));
+        buttonArray.get(4).setTexture(settTexture);
     }
     /**
      * This checks if the button is being hovered over
@@ -114,6 +117,20 @@ public class StartMenu {
             {
                 return b.getId();
             }
+        }
+        return 0;
+    }
+    /**
+     * This checks if the text is being hovered over
+     * - text check
+     *
+     */
+    public int checkText()
+    {
+
+        for (text t: textArray)
+        {
+            return t.getId();
         }
         return 0;
     }
@@ -146,6 +163,7 @@ public class StartMenu {
                 {
                     onMenu = false;
                     window.close();
+                    StartHelp sh = new StartHelp();
 
                 }
             }
@@ -165,18 +183,18 @@ public class StartMenu {
                     onMenu = false;
                 }
             }
-            if (Mouse.isButtonPressed(Mouse.Button.LEFT))
-            {
+            if (Mouse.isButtonPressed(Mouse.Button.LEFT)){
                 if (checkButtons() == 4)
                 {
                     window.close();
-                    Credits creds = new Credits();
-                    onMenu = false;
+                    //add continue here
+
                 }
             }
+
             if (Mouse.isButtonPressed(Mouse.Button.LEFT))
             {
-                if (checkButtons() == 6)
+                if (checkButtons() == 5)
                 {
                     window.close();
                     Settings sett = new Settings();
@@ -185,10 +203,15 @@ public class StartMenu {
             }
             window.clear();
             window.draw(backgroundSprite);
+            for (text t: textArray)
+            {
+                window.draw(t);
+            }
             for (Button b: buttonArray)
             {
                 window.draw(b);
             }
+            window.draw(logo);
             window.display();
         }
 

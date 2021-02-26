@@ -4,6 +4,11 @@ import org.jsfml.graphics.Color;
 
 import java.util.Random;
 
+/**
+ * Component: ItemRarity
+ *  - Defines The rarity of Items
+ *      - Gives them a color glow, defines there damage modifiers
+ */
 public enum ItemRarity
 {
     COMMON(Color.WHITE,0.4f,1),
@@ -15,14 +20,25 @@ public enum ItemRarity
     public final Color rarityColor;
     public final float chance;
     public final float multi;
-    ItemRarity(Color c,float chance, float multi)
-    {
-        this.rarityColor =c;
+
+    /**
+     * Constructor for a rarity
+     * @param c The color the rarity will give off
+     * @param chance The chance the rarity will happen
+     * @param multi
+     */
+    ItemRarity(Color c,float chance, float multi) {
+        this.rarityColor = c;
         this.chance = chance;
         this.multi = multi;
 
     }
 
+    /**
+     * Generates a random rarity for a given item
+     *  - Randomly generated based of the chances each rarity has
+     * @return The rarity generated
+     */
     public static ItemRarity generateRarity()
     {
         float v = new Random().nextFloat();

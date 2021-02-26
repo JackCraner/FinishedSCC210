@@ -6,7 +6,7 @@ public enum Entity implements FactorID
 {
     PLACEHOLDER("NULL","NULL"),
     PLAYER("Player", "Entities" + File.separator + "PlayerSpriteSheet.png"),
-    TORCH("Torch", "Fixtures" + File.separator +"Torch.png"),
+    TORCH("Torch", "Fixtures" + File.separator +"Torch_1.png"),
     CHEST("Chest", "Fixtures" + File.separator + "chest2.png"),
     ENEMY("Enemy", "Entities" + File.separator + "SkeletonSpriteSheet1.png"),
     DamageText("Text", "Text"),

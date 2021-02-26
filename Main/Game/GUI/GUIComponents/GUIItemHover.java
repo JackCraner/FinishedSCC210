@@ -83,7 +83,7 @@ public class GUIItemHover extends GUIComponent<Backpack>
             }
             if (BitMasks.checkIfContains(hover.getBitmask(), Armor.class))
             {
-                substring +=("Armor: " + (hover.getComponent(Armor.class).getArmor() + "\n"));
+                substring +=("Armor: " + (hover.getComponent(Armor.class).getArmorValue() + "\n"));
             }
             if (BitMasks.checkIfContains(hover.getBitmask(), GivenEffect.class))
             {

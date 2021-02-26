@@ -51,6 +51,7 @@ public class GUIManager implements Drawable
         guiMENUComponentList.put(GUIStrengthMenu.class,new GUIStrengthMenu(GUITarget.getComponent(Strength.class)));
         guiMENUComponentList.put(GUIWisdomMenu.class,new GUIWisdomMenu(GUITarget.getComponent(Wisdom.class)));
         guiMENUComponentList.put(GUIArmorMenu.class,new GUIArmorMenu(GUITarget.getComponent(ArmorContainer.class)));
+        guiMENUComponentList.put(GUIPlayerLevels.class, new GUIPlayerLevels(GUITarget.getComponent(Level.class)));
     }
     
     private static HashMap<Class<? extends GUIComponent>, GUIComponent> guiDSCREENComponentList = new HashMap<>();

@@ -9,24 +9,13 @@ import Main.Game.ECS.Factory.ItemTypes;
 import org.jsfml.system.Clock;
 import org.jsfml.system.Vector2f;
 
+/**
+ * Component: Pickup
+ *  - Defines whether a GameObject can be picked up or not
+ *
+ */
 public class Pickup extends Component
 {
-    /*
-    private ArrayList<ItemEffect> itemEffects = new ArrayList<>();
-    public Pickup(ItemEffect... effects)
-    {
-        for (ItemEffect e: effects)
-        {
-            itemEffects.add(e);
-        }
-    }
-
-    public ArrayList<ItemEffect> getItemEffects() {
-        return itemEffects;
-    }
-
-     */
-    //give it a Use case whether it is a sword swing or eat of an apple
 
     private Clock floorTimer;
     private ItemRarity rarity;

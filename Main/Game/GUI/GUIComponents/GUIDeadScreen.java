@@ -27,7 +27,7 @@ public class GUIDeadScreen extends GUIComponent<Health>
     private Color ScreenBack = new Color(38, 38, 38);           //The colour of the background
     private Color ScreenFront = new Color(254, 22, 22);         //The colour of the buttons
     private RectangleShape front;                                        //The title element of the screen
-    private int numButtons = 3;
+    private int numButtons = 1;
     private ArrayList<Button> buttonArray =  new ArrayList<>();          //Button arraylist
     private RectangleShape[] buttons = new RectangleShape[numButtons];   //The button element of the screen
     private RectangleShape back;                                         //The back element of the screen
@@ -37,9 +37,11 @@ public class GUIDeadScreen extends GUIComponent<Health>
     private Vector2f buttonSize;
     private Texture t1 = new Texture();
     private Texture t2 = new Texture();
-    private Texture t3 = new Texture();
-    private Texture t4 = new Texture();
+<<<<<<< HEAD
     private static GUIManager GUIMANAGER = GUIManager.getGUIinstance();
+=======
+
+>>>>>>> 1a841241a6f25263273fc14a5afd61b5739f4d44
 
     /**
      * GUIDeadScreen constructor. The gameover screen
@@ -55,23 +57,25 @@ public class GUIDeadScreen extends GUIComponent<Health>
 
         try
         {
-            t1.loadFromFile(Paths.get("Assets" + File.separator + "Menu" + File.separator+ "startnew.png"));
-            t2.loadFromFile(Paths.get("Assets" + File.separator + "Menu" + File.separator+ "settings.png"));
-            t3.loadFromFile(Paths.get("Assets" + File.separator + "Menu" + File.separator+ "quit.png"));
-            t4.loadFromFile(Paths.get("Assets" + File.separator + "Screens" + File.separator+ "GameOver.jpg"));
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a841241a6f25263273fc14a5afd61b5739f4d44
+            t1.loadFromFile(Paths.get("Assets" + File.separator + "Menu" + File.separator+ "quit.png"));
+            t2.loadFromFile(Paths.get("Assets" + File.separator + "Screens" + File.separator+ "GameOver.jpg"));
 
         }
         catch (Exception e)
         {
             System.out.println(e);
         }
+<<<<<<< HEAD
         buttonArray.add(new Button(1, new Vector2f(200, 400),600, 200));
+=======
+        buttonArray.add(new Button(1, new Vector2f(500, 500),600, 200));
+>>>>>>> 1a841241a6f25263273fc14a5afd61b5739f4d44
         buttonArray.get(0).setTexture(t1);
-        buttonArray.add(new Button(2, new Vector2f(200, 530), 600, 200));
-        buttonArray.get(1).setTexture(t2);
-        buttonArray.add(new Button(3, new Vector2f(200, 700), 600, 200));
-        buttonArray.get(2).setTexture(t3);
-        back.setTexture(t4);
+        back.setTexture(t2);
         back.setPosition(0, 0);
     }
 
@@ -100,25 +104,14 @@ public class GUIDeadScreen extends GUIComponent<Health>
     {
         if (Mouse.isButtonPressed(Mouse.Button.LEFT)) {
             if (checkButtons() == 1) {
-
                 Game.getGame().getWindow().close();
-                Game.getGame().getWindow().clear();
-                Game game = Game.getGame();
-                game.startGame();
 
             }
         }
-        if (Mouse.isButtonPressed(Mouse.Button.LEFT)) {
-            if (checkButtons() == 2) {
-                Game.getGame().getWindow().close();
-                Settings sett = new Settings();
-            }
-        }
-        if (Mouse.isButtonPressed(Mouse.Button.LEFT)) {
-            if (checkButtons() == 3) {
-                Game.getGame().getWindow().close();
-            }
-        }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a841241a6f25263273fc14a5afd61b5739f4d44
         back.setPosition(0, 0);
     }
 

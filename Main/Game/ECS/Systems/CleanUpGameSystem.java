@@ -28,7 +28,7 @@ public class CleanUpGameSystem extends GameSystem
             if (g.getName() != "Torch")
             {
 
-                if (g.getComponent(Pickup.class).getFloorTimer().getElapsedTime().asSeconds() > 5)
+                if (g.getComponent(Pickup.class).getFloorTimer().getElapsedTime().asSeconds() > 10)
                 {
                     EntityManager.getEntityManagerInstance().removeGameObject(g);
                 }

@@ -10,23 +10,23 @@ import java.io.File;
 import java.nio.file.Paths;
 
 /**
- * The ManaBar GUI Component
+ * The ArmorBar GUI Component showing the current value of the player's armor
  */
 public class GUIArmorBar extends GUIComponent<Armor>
 {
-    private Color armorBackColor = new Color(10, 153, 249);     //The colour of the current magic
-    private Color armorHaveColor = new Color(3, 3, 117);   //The colour of the Magic Lost
-    private RectangleShape front;                            //The front element of the ManaBar
-    private RectangleShape back;                             //The back element of the ManaBar
-    private Vector2f armorOrbSize;                            //The vector2f of the ManaBar
+    private Color armorBackColor = new Color(10, 153, 249);    //The colour of the current Armor status
+    private Color armorHaveColor = new Color(3, 3, 117);       //The colour of the damage to Armor
+    private RectangleShape front;                                       //The front element of the ArmorBar
+    private RectangleShape back;                                        //The back element of the ArmorBar
+    private Vector2f armorOrbSize;                                      //The vector2f of the ArmorBar
     private float topLeftY;
     private float currentArmor;
     private Text t = new Text();
     private Font f = new Font();
 
     /**
-     * The ManaBar GUI component
-     * @param s The current mana of the player
+     * The ArmorBar GUI component
+     * @param s The current player Armor value
      */
     public GUIArmorBar(Armor s)
     {
@@ -40,7 +40,7 @@ public class GUIArmorBar extends GUIComponent<Armor>
             System.out.println(e);
         }
         t = new Text("HI", f, 20);
-        currentArmor = s.getArmor();
+        currentArmor = s.getArmorValue();
         armorOrbSize = new Vector2f((float)(Game.WINDOWSIZE-870), 130); //length, width of bar
         front = new RectangleShape(armorOrbSize);
         back = new RectangleShape(armorOrbSize);
@@ -53,12 +53,12 @@ public class GUIArmorBar extends GUIComponent<Armor>
     }
 
     /**
-     * Updates the current mana value of the player
+     * Updates the current Armor value of the player
      */
     @Override
     public void update()
     {
-        currentArmor = getT().getArmor();
+        currentArmor = getT().getArmorValue();
         t.setString(String.valueOf((int) currentArmor));
         System.out.println(armorOrbSize.y* ( currentArmor/100));
         front.setSize(new Vector2f(armorOrbSize.x, armorOrbSize.y* ( currentArmor/100)));
@@ -73,7 +73,6 @@ public class GUIArmorBar extends GUIComponent<Armor>
     @Override
     public void draw(RenderTarget renderTarget, RenderStates renderStates)
     {
-
         renderTarget.draw(back,renderStates);
         renderTarget.draw(front,renderStates);
         renderTarget.draw(t);

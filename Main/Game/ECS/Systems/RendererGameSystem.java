@@ -2,7 +2,7 @@ package Main.Game.ECS.Systems;
 
 import Main.Game.ECS.Components.ComponentENUMs.TextureTypes;
 import Main.Game.ECS.Components.ItemComponents.Pickup;
-import Main.Game.ECS.Components.ItemComponents.Potion;
+
 import Main.Game.ECS.Components.SpecialComponents.ArmorContainer;
 import Main.Game.ECS.Components.SpecialComponents.Backpack;
 import Main.Game.ECS.Components.StandardComponents.Animation;

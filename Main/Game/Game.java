@@ -150,7 +150,7 @@ public class Game
         boolean fadeIn = true;
 
 
-        //m.play();
+        m.play();
 
         while(window.isOpen())
         {
